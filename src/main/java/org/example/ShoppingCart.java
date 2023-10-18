@@ -16,12 +16,12 @@ public class ShoppingCart {
     /**
      * 购物车列表
      */
-    private static CopyOnWriteArrayList<CartItem> shoppingCart = new CopyOnWriteArrayList<>();
+    private static final CopyOnWriteArrayList<CartItem> shoppingCart = new CopyOnWriteArrayList<>();
 
     /**
      * 折扣列表
      */
-    private static CopyOnWriteArrayList<CartDiscountRule> discountRules = new CopyOnWriteArrayList<>();
+    private static final CopyOnWriteArrayList<CartDiscountRule> discountRules = new CopyOnWriteArrayList<>();
 
     /**
      * 计算总价
