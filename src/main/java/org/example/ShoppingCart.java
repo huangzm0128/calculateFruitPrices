@@ -16,18 +16,18 @@ public class ShoppingCart {
     /**
      * 购物车列表
      */
-    private static final CopyOnWriteArrayList<CartItem> shoppingCart = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<CartItem> shoppingCart = new CopyOnWriteArrayList<>();
 
     /**
      * 折扣列表
      */
-    private static final CopyOnWriteArrayList<CartDiscountRule> discountRules = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<CartDiscountRule> discountRules = new CopyOnWriteArrayList<>();
 
     /**
      * 计算总价
      * @return
      */
-    public static BigDecimal calculateTotalPrice(){
+    public BigDecimal calculateTotalPrice(){
         BigDecimal total = new BigDecimal(0);
         // 计算购物车总金额
         for (CartItem item : shoppingCart) {
@@ -44,7 +44,7 @@ public class ShoppingCart {
      * 添加商品到购物车
      * @param item
      */
-    public static void addItem(CartItem item) {
+    public void addItem(CartItem item) {
         shoppingCart.add(item);
     }
 
@@ -52,7 +52,7 @@ public class ShoppingCart {
      * 添加购物车折扣
      * @param item
      */
-    public static void addDiscount(CartDiscountRule item) {
+    public void addDiscount(CartDiscountRule item) {
         discountRules.add(item);
         if (discountRules.size() < 2){
             return;
@@ -69,7 +69,7 @@ public class ShoppingCart {
      * @param totalAmount
      * @return
      */
-    private static BigDecimal applyDiscount(BigDecimal totalAmount) {
+    private BigDecimal applyDiscount(BigDecimal totalAmount) {
         // 根据折扣规则来计算折扣金额
         // 这里需要遍历折扣规则列表，查找满足条件的折扣规则,折扣规则列表需排序好，价格高的排前
         for (CartDiscountRule discountRule : discountRules){
@@ -87,13 +87,13 @@ public class ShoppingCart {
     /**
      * 清空购物车
      */
-    public static void clearCart(){
+    public void clearCart(){
         shoppingCart.clear();
     }
     /**
      * 清空购物车折扣规则列表
      */
-    public static void clearDiscountRules(){
+    public void clearDiscountRules(){
         discountRules.clear();
     }
 }
